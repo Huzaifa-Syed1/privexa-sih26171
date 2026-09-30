@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Privexa — Privacy-First Autonomous Browser Agent",
+  "version": "0.1.0",
+  "description": "On-device visual perception agent. Reads page structure locally, redacts PII before any network call, sends only sanitized scene-graphs to the server.",
+  "permissions": ["activeTab", "scripting", "storage", "offscreen"],
+  "host_permissions": ["http://127.0.0.1:8000/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Privexa Agent"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tesseract/*",
+        "tesseract/core/*",
+        "tesseract/lang/*",
+        "offscreen.html"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

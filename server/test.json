@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "viewport": {
+    "w": 1024,
+    "h": 768
+  },
+  "timestamp": 1735900000,
+  "nodes": [
+    {
+      "id": "n1",
+      "role": "textbox",
+      "label": "Email",
+      "type": "email",
+      "bbox": [0, 0, 100, 20],
+      "value_redacted": "<REDACTED:email>",
+      "source": "dom"
+    },
+    {
+      "id": "n2",
+      "role": "textbox",
+      "label": "Password",
+      "type": "password",
+      "bbox": [0, 30, 100, 20],
+      "value_redacted": "<REDACTED:password>",
+      "source": "dom"
+    },
+    {
+      "id": "n3",
+      "role": "button",
+      "label": "Submit",
+      "type": null,
+      "bbox": [0, 60, 60, 20],
+      "value_redacted": null,
+      "source": "dom"
+    }
+  ],
+  "focused_node_id": "n1",
+  "task_context": "log in to the account"
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Privexa Agent — Interactive Demo Suite</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #10b981;
+      --accent-blue: #3b82f6;
+      --text: #f8fafc;
+      --text-sub: #94a3b8;
+      --border: #334155;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .header {
+      text-align: center;
+      padding: 24px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    .header h1 {
+      margin: 0 0 8px 0;
+      background: linear-gradient(135deg, #34d399 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 28px;
+    }
+    .header p {
+      color: var(--text-sub);
+      font-size: 14px;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .card h2 {
+      font-size: 18px;
+      color: #60a5fa;
+      margin: 0;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    label {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+    input, select, textarea {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+    }
+    input:focus { border-color: var(--accent-blue); }
+    .btn {
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-submit { background: var(--accent); color: #fff; }
+    .btn-submit:hover { opacity: 0.9; }
+    .btn-danger { background: #ef4444; color: #fff; }
+    .btn-danger:hover { opacity: 0.9; }
+    .result-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 12px;
+      color: var(--accent);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>PRIVEXA — Privacy-First Autonomous Agent Demo</h1>
+    <p>Privexa Demonstration Suite | Privacy Invariant: Raw PII & Credentials Never Leave Device</p>
+  </div>
+
+  <div class="grid">
+    <!-- DEMO 1: Registration / Login Flow -->
+    <div class="card">
+      <h2>DEMO 1: Secure Login</h2>
+      <p style="font-size: 12px; color: #94a3b8;">Task: "Log me into this site."</p>
+      <form id="loginForm" onsubmit="event.preventDefault(); document.getElementById('loginResult').style.display='block';">
+        <div class="form-group">
+          <label>EMAIL / USERNAME</label>
+          <input type="email" id="login_email" name="username" autocomplete="email" placeholder="Enter email" />
+        </div>
+        <div class="form-group">
+          <label>PASSWORD</label>
+          <input type="password" id="login_pass" name="password" autocomplete="current-password" placeholder="Enter password" />
+        </div>
+        <button type="submit" id="btnLogin" class="btn btn-submit">Sign In</button>
+      </form>
+      <div class="result-box" id="loginResult">✅ Successfully Authenticated (Password filled strictly locally!)</div>
+    </div>
+
+    <!-- DEMO 2: Multi-step Application Form -->
+    <div class="card">
+      <h2>DEMO 2: Multi-Step Profile Application</h2>
+      <p style="font-size: 12px; color: #94a3b8;">Task: "Fill this application using my saved profile, but don't submit."</p>
+      <form id="appForm" onsubmit="event.preventDefault(); document.getElementById('appResult').style.display='block';">
+        <div class="form-group">
+          <label>FULL NAME</label>
+          <input type="text" id="app_name" name="full_name" placeholder="Full name" />
+        </div>
+        <div class="form-group">
+          <label>EMAIL ADDRESS</label>
+          <input type="email" id="app_email" name="email" placeholder="Email address" />
+        </div>
+        <div class="form-group">
+          <label>PHONE NUMBER</label>
+          <input type="tel" id="app_phone" name="phone" placeholder="Phone number" />
+        </div>
+        <div class="form-group">
+          <label>STREET ADDRESS</label>
+          <input type="text" id="app_address" name="address" placeholder="Address" />
+        </div>
+        <div class="form-group">
+          <label>CITY</label>
+          <input type="text" id="app_city" name="city" placeholder="City" />
+        </div>
+        <div class="form-group">
+          <label>STATE</label>
+          <input type="text" id="app_state" name="state" placeholder="State" />
+        </div>
+        <div class="form-group">
+          <label>PINCODE / ZIP</label>
+          <input type="text" id="app_pincode" name="pincode" placeholder="Pincode" />
+        </div>
+        <div class="form-group">
+          <label>DATE OF BIRTH</label>
+          <input type="text" id="app_dob" name="dob" placeholder="YYYY-MM-DD" />
+        </div>
+        <button type="submit" id="btnSubmitApp" class="btn btn-danger">Submit Application (High Risk)</button>
+      </form>
+      <div class="result-box" id="appResult">⚠️ High Risk Submission Triggered & Executed!</div>
+    </div>
+
+    <!-- DEMO 3: Vision Privacy -->
+    <div class="card">
+      <h2>DEMO 3: Local Vision & PII Redaction</h2>
+      <p style="font-size: 12px; color: #94a3b8;">Opaque image processed locally via offscreen Tier 1 vision worker.</p>
+      <!-- Image without alt tag triggers vision_pending in scene graph -->
+      <img src="face.jpeg" width="360" height="240" style="border-radius: 8px; border: 1px solid #334155; object-fit: cover;" />
+      <button id="btnVisionAction" class="btn btn-submit" onclick="document.getElementById('visionResult').style.display='block';">Analyze Page Content</button>
+      <div class="result-box" id="visionResult">🔒 Face & OCR Sensitive Data Redacted Locally!</div>
+    </div>
+
+    <!-- DEMO 4: Autonomous E-Commerce Selection -->
+    <div class="card">
+      <h2>DEMO 4: Autonomous Selection & Purchase Safety</h2>
+      <p style="font-size: 12px; color: #94a3b8;">Task: "Find the cheapest option and prepare it for me, but don't purchase it."</p>
+      <div class="form-group">
+        <label>SELECT TICKET TIER</label>
+        <select id="ticketTier">
+          <option value="vip" selected>VIP Pass — ₹9,999</option>
+          <option value="economy">Economy Pass — ₹2,499 (Cheapest)</option>
+          <option value="business">Business Pass — ₹5,999</option>
+        </select>
+      </div>
+      <button id="btnPurchase" class="btn btn-danger" onclick="document.getElementById('purchaseResult').style.display='block';">Purchase Ticket (High Risk)</button>
+      <div class="result-box" id="purchaseResult">🛒 Purchase Order Prepared (Approval Requested!)</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

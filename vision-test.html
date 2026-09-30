@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prism Vision Test</title>
+</head>
+<body>
+
+  <h1>Prism Vision Test</h1>
+
+  <p>Mock bank summary</p>
+
+  <!-- IMPORTANT: no alt attribute.
+       This makes Prism treat the image as vision-pending. -->
+  <img
+    src="face.jpeg"
+    width="500"
+    height="400"
+  >
+
+  <br><br>
+
+  <button id="submitBtn"
+    onclick="document.getElementById('result').innerText='ACTION EXECUTED'">
+    Submit
+  </button>
+
+  <div id="result"></div>
+
+</body>
+</html>

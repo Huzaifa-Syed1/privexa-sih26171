@@ -1,0 +1,25 @@
+{
+  "name": "extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "build": "node build.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/browser": "^4.1.11",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.0.1",
+    "vitest": "^4.1.11"
+  },
+  "dependencies": {
+    "@tensorflow-models/blazeface": "^0.1.0",
+    "@tensorflow/tfjs": "^4.22.0",
+    "tesseract.js": "^7.0.0"
+  }
+}
